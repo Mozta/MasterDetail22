@@ -59,7 +59,7 @@
                     style="?android:attr/textAppearanceLarge"
                     android:text="Fecha de nacimiento"/>
                 <TextView
-                    android:id="@+id/fechaNacimiento"
+                    android:id="@+id/txt_nacimiento"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="12dp"
@@ -75,6 +75,7 @@
                     style="?android:attr/textAppearanceLarge"
                     android:text="Lugar de residencia"/>
                 <TextView
+                    android:id="@+id/txt_residencia"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="12dp"
@@ -91,6 +92,7 @@
                     style="?android:attr/textAppearanceLarge"
                     android:text="Ocupación"/>
                 <TextView
+                    android:id="@+id/txt_ocupacion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="12dp"
@@ -160,6 +162,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="16dp"
+                android:text="Historial del paciente"
                 android:textIsSelectable="true" />
 
             <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -181,7 +184,7 @@
 
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/fab_patient"
         android:layout_width="100dp"
         android:layout_height="100dp"
 

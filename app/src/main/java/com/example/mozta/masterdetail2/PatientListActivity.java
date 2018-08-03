@@ -68,7 +68,7 @@ public class PatientListActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.patient_list);
         assert recyclerView != null;
 
-        adapter = new PatientsAdapter(result);
+        adapter = new PatientsAdapter(this, result);
 
         setupRecyclerView((RecyclerView) recyclerView);
 
@@ -184,14 +184,14 @@ public class PatientListActivity extends AppCompatActivity {
                 DummyContent.DummyItem item = (DummyContent.DummyItem) view.getTag();
 
                 //Pone los datos en el fragmento derecho
-                Bundle arguments = new Bundle();
+                /*Bundle arguments = new Bundle();
                 arguments.putString(PatientDetailFragment.ARG_ITEM_ID, item.id);
                 Log.d("MIO", item.id);
                 PatientDetailFragment fragment = new PatientDetailFragment();
                 fragment.setArguments(arguments);
                 mParentActivity.getSupportFragmentManager().beginTransaction()
                         .replace(R.id.patient_detail_container, fragment)
-                        .commit();
+                        .commit();*/
             }
         };
 

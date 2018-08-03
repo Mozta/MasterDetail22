@@ -1,6 +1,8 @@
 package com.example.mozta.masterdetail2;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -20,10 +22,15 @@ public class PatientsAdapter extends RecyclerView.Adapter<PatientsAdapter.Patien
     public View view;
     private PatientListActivity mParentActivity;
     private RecyclerViewOnItemClickListener recyclerViewOnItemClickListener;
+    private Context mContext;
+
+    public String itemSelected;
 
     private List<PatientsModel> list;
+    private String ARG_ITEM_ID;
 
-    public PatientsAdapter(List<PatientsModel> list) {
+    public PatientsAdapter(Context context, List<PatientsModel> list) {
+        this.mContext = context;
         this.list = list;
     }
 
@@ -59,14 +66,16 @@ public class PatientsAdapter extends RecyclerView.Adapter<PatientsAdapter.Patien
             @Override
             public void onClick(View v) {
                 Log.d("TOCO","me tocaron: "+list.get(position).Folio);
+                itemSelected = list.get(position).Folio;
 
                 //Pone los datos en el fragmento derecho
                 Bundle arguments = new Bundle();
-                arguments.putString(PatientDetailFragment.ARG_ITEM_ID, list.get(position).key);
-                Log.d("MIO", list.get(position).key);
+                arguments.putString("KEY", list.get(position).Paciente);
+                Log.d("MIO", list.get(position).Paciente);
+
                 PatientDetailFragment fragment = new PatientDetailFragment();
                 fragment.setArguments(arguments);
-                mParentActivity.getSupportFragmentManager().beginTransaction()
+                ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction()
                         .replace(R.id.patient_detail_container, fragment)
                         .commit();
             }
@@ -90,6 +99,7 @@ public class PatientsAdapter extends RecyclerView.Adapter<PatientsAdapter.Patien
     public int getItemCount() {
         return list.size();
     }
+
 
     class PatientsViewHolder extends RecyclerView.ViewHolder{
 

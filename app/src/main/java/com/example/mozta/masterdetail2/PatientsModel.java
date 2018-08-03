@@ -11,6 +11,7 @@ public class PatientsModel {
     String FechaRegistro, Folio, Paciente, nombre;
 
     public String key;
+    public static final Map<String, PatientsModel> ITEM_MAP = new HashMap<String, PatientsModel>();
 
     public PatientsModel() {
     }
