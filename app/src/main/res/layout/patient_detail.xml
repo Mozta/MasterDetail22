@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".PatientDetailFragment"
+    tools:ignore="MergeRootFrame">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_marginTop="-25dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_bar_height"
+        android:fitsSystemWindows="false"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:toolbarId="@+id/toolbar">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/detail_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/patient_detail_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+                <TextView
+                    android:id="@+id/nacimiento"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    style="?android:attr/textAppearanceLarge"
+                    android:text="Fecha de nacimiento"/>
+                <TextView
+                    android:id="@+id/fechaNacimiento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_toRightOf="@+id/nacimiento"
+                    style="?android:attr/textAppearanceLarge"
+                    android:text="04/11/1993"/>
+
+                <TextView
+                    android:id="@+id/residencia"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/nacimiento"
+                    style="?android:attr/textAppearanceLarge"
+                    android:text="Lugar de residencia"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_below="@+id/nacimiento"
+                    android:layout_toRightOf="@+id/residencia"
+                    style="?android:attr/textAppearanceLarge"
+                    android:text="Puebla"/>
+
+                <TextView
+                    android:id="@+id/ocupacion"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/residencia"
+                    style="?android:attr/textAppearanceLarge"
+                    android:text="Ocupación"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_below="@+id/residencia"
+                    android:layout_toRightOf="@+id/residencia"
+                    style="?android:attr/textAppearanceLarge"
+                    android:text="Ingeniero"/>
+
+
+                <TextView
+                    android:id="@+id/txt_rfc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    style="?android:attr/textAppearanceLarge"
+                    android:text="HGFDDDSG3423"/>
+                <TextView
+                    android:id="@+id/rfc"
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/txt_rfc"
+                    android:layout_marginRight="12dp"
+                    style="?android:attr/textAppearanceLarge"
+                    android:text="RFC"/>
+
+                <TextView
+                    android:id="@+id/txt_curp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/rfc"
+                    style="?android:attr/textAppearanceLarge"
+                    android:text="HGFDDDSG3423"/>
+                <TextView
+                    android:id="@+id/curp"
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/txt_curp"
+                    android:layout_below="@+id/rfc"
+                    android:layout_marginRight="12dp"
+                    style="?android:attr/textAppearanceLarge"
+                    android:text="CURP"/>
+
+                <TextView
+                    android:id="@+id/txt_sangre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/curp"
+                    style="?android:attr/textAppearanceLarge"
+                    android:text="AB Positivo"/>
+                <TextView
+                    android:id="@+id/sangre"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/txt_sangre"
+                    android:layout_below="@+id/curp"
+                    android:layout_marginRight="12dp"
+                    style="?android:attr/textAppearanceLarge"
+                    android:text="Sangre"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/patient_detail"
+                style="?android:attr/textAppearanceLarge"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp"
+                android:textIsSelectable="true" />
+
+            <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/patient_list_history"
+                android:name="com.example.mozta.masterdetail2.PatientListFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:layout_marginRight="16dp"
+                app:layoutManager="LinearLayoutManager"
+                tools:context="com.example.mozta.masterdetail2.PatientListActivity"
+                tools:listitem="@layout/patient_list_content_history" />
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+
+        android:layout_margin="@dimen/fab_margin"
+        app:layout_anchorGravity="top|center"
+        app:layout_anchor="@+id/patient_detail_container"
+        app:fabCustomSize="35dp"
+        app:backgroundTint="@android:color/white"
+        app:srcCompat="@drawable/man" />
+
+    <!--<android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_vertical|start"
+        android:layout_margin="@dimen/fab_margin"
+        app:layout_anchorGravity="top|center"
+        app:layout_anchor="@+id/patient_detail_container"
+        app:fabCustomSize="35dp"
+        app:backgroundTint="@android:color/white"
+        app:srcCompat="@drawable/man" />-->
+
+
+
+</android.support.design.widget.CoordinatorLayout>

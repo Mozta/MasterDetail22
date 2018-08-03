@@ -1,0 +1,115 @@
+{
+  "project_info": {
+    "project_number": "952798936791",
+    "firebase_url": "https://appmedica-idit.firebaseio.com",
+    "project_id": "appmedica-idit",
+    "storage_bucket": "appmedica-idit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:952798936791:android:34cf9f95a6d99cf3",
+        "android_client_info": {
+          "package_name": "com.example.mozta.masterdetail2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "952798936791-anpa3iiuoinhcp3e2f9e3k8dqb3f5llm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mozta.masterdetail2",
+            "certificate_hash": "b96f12eefd12ec394c3f952797b4eef0f534524d"
+          }
+        },
+        {
+          "client_id": "952798936791-48406c4mh5k3l5oc17i0tol8cvreeu4q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mozta.masterdetail2",
+            "certificate_hash": "a6547956cc8e27ee954dfac07d2b2b107fb99f5f"
+          }
+        },
+        {
+          "client_id": "952798936791-urqs7ti5gdgtc9uenfiebm8q30uq25vk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqup3kGzOFBBBPXul6PbXiS6yw6pLgKwM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "952798936791-urqs7ti5gdgtc9uenfiebm8q30uq25vk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:952798936791:android:bcee89719aa77a41",
+        "android_client_info": {
+          "package_name": "com.idit.registromedico"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "952798936791-gtv8iq91ojbrql6m7p5e62j3k27e9j78.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.idit.registromedico",
+            "certificate_hash": "ec3ae0c11648e08f5b07db2bc7a7037bc9613395"
+          }
+        },
+        {
+          "client_id": "952798936791-htr53hh63u01i6hdfrffhbqdb9l5m7ri.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.idit.registromedico",
+            "certificate_hash": "f90f3310c8aa0669c257bebd7b7f25e95a712b2f"
+          }
+        },
+        {
+          "client_id": "952798936791-urqs7ti5gdgtc9uenfiebm8q30uq25vk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqup3kGzOFBBBPXul6PbXiS6yw6pLgKwM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "952798936791-urqs7ti5gdgtc9uenfiebm8q30uq25vk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

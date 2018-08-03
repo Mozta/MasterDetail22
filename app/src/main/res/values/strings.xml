@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MasterDetail2</string>
+    <string name="title_patient_detail">Patient Detail</string>
+</resources>
