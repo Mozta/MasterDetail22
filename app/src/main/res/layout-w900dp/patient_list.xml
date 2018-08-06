@@ -25,7 +25,7 @@
         android:layout_width="@dimen/item_width"
         android:layout_height="match_parent"
 
-        android:layout_marginRight="16dp"
+
         app:layoutManager="LinearLayoutManager"
         tools:context="com.example.mozta.masterdetail2.PatientListActivity"
         tools:listitem="@layout/patient_list_content" />

@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp"
+    android:layout_marginHorizontal="12dp"
+    android:layout_marginVertical="2dp"
     android:clickable="true"
-    android:background="?attr/selectableItemBackground"
-    android:orientation="vertical">
+    card_view:cardCornerRadius="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+
+        android:background="?attr/selectableItemBackground"
+        android:orientation="vertical">
 
     <ImageView
         android:id="@+id/view_main_header__avatar"
@@ -54,3 +63,4 @@
         android:textSize="22sp" />
 
 </RelativeLayout>
+</android.support.v7.widget.CardView>
