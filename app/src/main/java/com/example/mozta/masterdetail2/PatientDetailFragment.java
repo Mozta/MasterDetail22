@@ -1,10 +1,11 @@
 package com.example.mozta.masterdetail2;
 
-import android.app.Activity;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,15 +14,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.mozta.masterdetail2.dummy.DummyContent;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import com.bumptech.glide.annotation.GlideModule;
-import com.bumptech.glide.module.AppGlideModule;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A fragment representing a single Patient detail screen.
@@ -41,6 +42,11 @@ public class PatientDetailFragment extends Fragment {
     private FloatingActionButton fabPatient;
 
     private DatabaseReference mDatabase, mRefNombre;
+
+    private TextView emptyText;
+    private RecyclerView recyclerView;
+    private List<HistoryModel> result;
+    private HistoryAdapter adapter;
 
     /**
      * The dummy content this fragment is presenting.
@@ -72,6 +78,8 @@ public class PatientDetailFragment extends Fragment {
 
         }
 
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Paciente_release").child(ARG_ITEM_ID).child("Expedientes");
+
         mRefNombre = FirebaseDatabase.getInstance().getReference().child("Paciente_release");
 
         mRefNombre.child(ARG_ITEM_ID).child("DatosPaciente").addValueEventListener(new ValueEventListener() {
@@ -99,6 +107,20 @@ public class PatientDetailFragment extends Fragment {
                             .load(patientModel.patient_image)
                             .into(fabPatient);
 
+                    result = new ArrayList<>();
+
+                    recyclerView = ((RecyclerView) rootView.findViewById(R.id.patient_list_history));
+                    recyclerView.setHasFixedSize(true);
+                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(rootView.getContext());
+                    linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
+                    recyclerView.setLayoutManager(linearLayoutManager);
+
+                    adapter = new HistoryAdapter(result);
+                    recyclerView.setAdapter(adapter);
+
+                    updateList();
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -110,7 +132,88 @@ public class PatientDetailFragment extends Fragment {
             }
         });
 
+        //emptyText = rootView.findViewById(R.id.text_no_data);
 
+
+    }
+
+    private void updateList(){
+        mDatabase.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                final HistoryModel model = dataSnapshot.getValue(HistoryModel.class);
+                model.setKey(dataSnapshot.getKey());
+
+                //model.setNombre(dataSnapshot.getValue().toString());
+                Log.e("MUESTRA", dataSnapshot.getValue().toString());
+
+
+                result.add(model);
+                adapter.notifyDataSetChanged();
+
+                checkIfEmpty();
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                HistoryModel model = dataSnapshot.getValue(HistoryModel.class);
+                model.setKey(dataSnapshot.getKey());
+
+                int index = getItemIndex(model);
+                result.set(index, model);
+                adapter.notifyItemChanged(index);
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                HistoryModel model = dataSnapshot.getValue(HistoryModel.class);
+                model.setKey(dataSnapshot.getKey());
+
+                int index = getItemIndex(model);
+                result.remove(index);
+                adapter.notifyItemRemoved(index);
+
+                checkIfEmpty();
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private int getItemIndex(HistoryModel historyModel){
+        int index = -1;
+
+        for (int i=0; i < result.size(); i++){
+            if (result.get(i).key.equals(historyModel.key)) {
+                index = i;
+                break;
+            }
+        }
+        return index;
+
+    }
+
+    private void removePatient(int position){
+        mDatabase.child(result.get(position).key).removeValue();
+    }
+
+    private void checkIfEmpty(){
+        if (result.size() == 0){
+            recyclerView.setVisibility(View.INVISIBLE);
+            //emptyText.setVisibility(View.VISIBLE);
+        } else{
+            recyclerView.setVisibility(View.VISIBLE);
+            //emptyText.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override

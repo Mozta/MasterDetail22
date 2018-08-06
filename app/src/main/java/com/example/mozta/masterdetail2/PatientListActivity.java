@@ -187,6 +187,7 @@ public class PatientListActivity extends AppCompatActivity {
                 /*Bundle arguments = new Bundle();
                 arguments.putString(PatientDetailFragment.ARG_ITEM_ID, item.id);
                 Log.d("MIO", item.id);
+
                 PatientDetailFragment fragment = new PatientDetailFragment();
                 fragment.setArguments(arguments);
                 mParentActivity.getSupportFragmentManager().beginTransaction()

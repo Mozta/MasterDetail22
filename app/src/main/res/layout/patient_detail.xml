@@ -108,10 +108,11 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     style="?android:attr/textAppearanceLarge"
+                    android:textAlignment="textEnd"
                     android:text="HGFDDDSG3423"/>
                 <TextView
                     android:id="@+id/rfc"
-                    android:layout_width="170dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toLeftOf="@+id/txt_rfc"
                     android:layout_marginRight="12dp"
@@ -125,10 +126,11 @@
                     android:layout_alignParentRight="true"
                     android:layout_below="@+id/rfc"
                     style="?android:attr/textAppearanceLarge"
+                    android:textAlignment="textEnd"
                     android:text="HGFDDDSG3423"/>
                 <TextView
                     android:id="@+id/curp"
-                    android:layout_width="170dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toLeftOf="@+id/txt_curp"
                     android:layout_below="@+id/rfc"
@@ -146,7 +148,7 @@
                     android:text="AB Positivo"/>
                 <TextView
                     android:id="@+id/sangre"
-                    android:layout_width="220dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toLeftOf="@+id/txt_sangre"
                     android:layout_below="@+id/curp"
@@ -156,14 +158,21 @@
 
             </RelativeLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimaryDark">
+
+            </LinearLayout>
+
             <TextView
                 android:id="@+id/patient_detail"
                 style="?android:attr/textAppearanceLarge"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
                 android:padding="16dp"
-                android:text="Historial del paciente"
-                android:textIsSelectable="true" />
+                android:text="Historial del paciente" />
 
             <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
@@ -172,15 +181,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
 
-                android:layout_marginRight="16dp"
+                android:layout_marginHorizontal="32dp"
                 app:layoutManager="LinearLayoutManager"
-                tools:context="com.example.mozta.masterdetail2.PatientListActivity"
                 tools:listitem="@layout/patient_list_content_history" />
 
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
-
 
 
     <android.support.design.widget.FloatingActionButton
@@ -194,19 +201,5 @@
         app:fabCustomSize="35dp"
         app:backgroundTint="@android:color/white"
         app:srcCompat="@drawable/man" />
-
-    <!--<android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center_vertical|start"
-        android:layout_margin="@dimen/fab_margin"
-        app:layout_anchorGravity="top|center"
-        app:layout_anchor="@+id/patient_detail_container"
-        app:fabCustomSize="35dp"
-        app:backgroundTint="@android:color/white"
-        app:srcCompat="@drawable/man" />-->
-
-
 
 </android.support.design.widget.CoordinatorLayout>

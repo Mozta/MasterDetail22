@@ -10,37 +10,38 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:clickable="true"
         android:background="?attr/selectableItemBackground"
-        android:orientation="vertical">
+        android:clickable="true"
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/text_capturista"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/view_main_header__avatar"
-            android:textColor="#000"
             android:text="Capturista: Rafael Pérez Aguirre"
+            android:textColor="#000"
             android:textSize="18sp" />
 
         <TextView
             android:id="@+id/text_uuidHistory"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/view_main_header__avatar"
             android:layout_below="@id/text_capturista"
-            android:textColor="#000"
-            android:text="b00f6eab-ac33-4f90-b35d-8a56aa257d86" />
+            android:layout_toRightOf="@+id/view_main_header__avatar"
+            android:text="b00f6eab-ac33-4f90-b35d-8a56aa257d86"
+            android:textColor="#000" />
 
         <TextView
             android:id="@+id/text_date_history"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="27/10/2017 05:45:23"
+            android:layout_below="@id/text_uuidHistory"
             android:layout_toRightOf="@+id/view_main_header__avatar"
-            android:layout_below="@id/text_uuidHistory"/>
-        
+            android:text="27/10/2017 05:45:23" />
+
 
         <ImageButton
             android:id="@+id/btn_view"
@@ -49,7 +50,7 @@
 
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:background="@drawable/ic_eye"/>
+            android:background="@drawable/ic_eye" />
 
     </RelativeLayout>
 
