@@ -49,7 +49,7 @@ public class PatientsAdapter extends RecyclerView.Adapter<PatientsAdapter.Patien
     @Override
     public void onBindViewHolder(final PatientsViewHolder holder, final int position) {
 
-        PatientsModel patient = list.get(position);
+        final PatientsModel patient = list.get(position);
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,14 +83,13 @@ public class PatientsAdapter extends RecyclerView.Adapter<PatientsAdapter.Patien
 
         holder.textDate.setText(patient.FechaRegistro);
         holder.textFolio.setText(patient.Folio);
-        holder.textPatient.setText(patient.Paciente);
+        //holder.textPatient.setText(patient.Paciente);
         holder.text_nombrePatient.setText(patient.nombre);
 
         holder.itemView.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
             @Override
             public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
-                contextMenu.add(holder.getAdapterPosition(), 0, 0, "Visualizar");
-                contextMenu.add(holder.getAdapterPosition(), 0, 0, "Eliminar");
+                contextMenu.add(holder.getAdapterPosition(), 0, 0, "UUID: " + patient.Paciente);
             }
         });
     }
@@ -110,7 +109,7 @@ public class PatientsAdapter extends RecyclerView.Adapter<PatientsAdapter.Patien
 
             textDate = itemView.findViewById(R.id.text_date);
             textFolio = itemView.findViewById(R.id.text_folio);
-            textPatient = itemView.findViewById(R.id.text_uuidPatient);
+            //textPatient = itemView.findViewById(R.id.text_uuidPatient);
             text_nombrePatient = itemView.findViewById(R.id.text_nombrePatient);
         }
     }

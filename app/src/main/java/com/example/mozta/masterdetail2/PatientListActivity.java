@@ -211,7 +211,7 @@ public class PatientListActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.mIdView.setText(mValues.get(position).key);
+            //holder.mIdView.setText(mValues.get(position).key);
             holder.mContentView.setText(mValues.get(position).nombre);
 
             holder.itemView.setTag(mValues.get(position));
@@ -224,12 +224,12 @@ public class PatientListActivity extends AppCompatActivity {
         }
 
         class ViewHolder extends RecyclerView.ViewHolder {
-            final TextView mIdView;
+            //final TextView mIdView;
             final TextView mContentView;
 
             ViewHolder(View view) {
                 super(view);
-                mIdView = (TextView) view.findViewById(R.id.text_uuidPatient);
+                //mIdView = (TextView) view.findViewById(R.id.text_uuidPatient);
                 mContentView = (TextView) view.findViewById(R.id.text_nombrePatient);
             }
         }
