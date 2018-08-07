@@ -3,6 +3,7 @@ package com.example.mozta.masterdetail2;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -48,6 +49,8 @@ public class PatientDetailFragment extends Fragment {
     private List<HistoryModel> result;
     private HistoryAdapter adapter;
 
+    private String nombre;
+
     /**
      * The dummy content this fragment is presenting.
      */
@@ -92,6 +95,7 @@ public class PatientDetailFragment extends Fragment {
                     if (appBarLayout != null) {
                         appBarLayout.setTitle(patientModel.Nombre);
                     }
+                    nombre = patientModel.Nombre;
 
                     //mNacimiento = dataSnapshot.getChildren("Nacimiento").getValue().toString();
                     Log.d("QUERY",patientModel.Nacimiento);
@@ -106,6 +110,15 @@ public class PatientDetailFragment extends Fragment {
                     Glide.with(rootView)
                             .load(patientModel.patient_image)
                             .into(fabPatient);
+
+                    FloatingActionButton fab = ((FloatingActionButton) rootView.findViewById(R.id.fab));
+                    fab.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Snackbar.make(view, "Anadir nuevo registro al paciente: "+nombre, Snackbar.LENGTH_LONG)
+                                    .setAction("Action", null).show();
+                        }
+                    });
 
                     result = new ArrayList<>();
 
@@ -133,8 +146,6 @@ public class PatientDetailFragment extends Fragment {
         });
 
         //emptyText = rootView.findViewById(R.id.text_no_data);
-
-
     }
 
     private void updateList(){

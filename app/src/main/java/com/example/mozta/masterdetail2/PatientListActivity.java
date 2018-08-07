@@ -52,7 +52,7 @@ public class PatientListActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference().child("User").child("R0WtLh1T9dXu3QrSUyjhYK8Qd3q2").child("Registros");
         mRefNombre = FirebaseDatabase.getInstance().getReference().child("Paciente_release");
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,6 +60,7 @@ public class PatientListActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        */
 
         //emptyText = findViewById(R.id.text_no_data);
 

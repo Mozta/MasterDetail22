@@ -1,10 +1,12 @@
 package com.example.mozta.masterdetail2;
 
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -53,6 +55,13 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
 
         holder.textDate.setText(historyModel.Timestamp);
         holder.text_uuid.setText(historyModel.key);
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.imageView.setImageResource(R.drawable.ic_assignment);
+            }
+        });
+
 
         /*holder.itemView.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
             @Override
@@ -72,6 +81,8 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
     class HistoryViewHolder extends RecyclerView.ViewHolder{
 
         TextView textCapturista, textDate, text_uuid;
+        ImageView imageView;
+        CardView cardView;
 
         public HistoryViewHolder(View itemView) {
             super(itemView);
@@ -79,6 +90,8 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
             textDate = itemView.findViewById(R.id.text_date_history);
             textCapturista = itemView.findViewById(R.id.text_capturista);
             text_uuid = itemView.findViewById(R.id.text_uuidHistory);
+            imageView = itemView.findViewById(R.id.btn_view);
+            cardView = itemView.findViewById(R.id.card_view);
         }
     }
 }
