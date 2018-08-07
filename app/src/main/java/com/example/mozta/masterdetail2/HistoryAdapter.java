@@ -7,6 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.List;
 
 /**
@@ -14,6 +20,7 @@ import java.util.List;
  */
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>{
+    private ValueEventListener mDatabase;
 
     private List<HistoryModel> list;
 
@@ -31,17 +38,30 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
 
         HistoryModel historyModel = list.get(position);
 
-        holder.textCapturista.setText(historyModel.Capturista);
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("User").child(historyModel.Capturista).child("Nombre").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                holder.textCapturista.setText("Capturado por: " + dataSnapshot.getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
         holder.textDate.setText(historyModel.Timestamp);
         holder.text_uuid.setText(historyModel.key);
 
-        holder.itemView.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
+        /*holder.itemView.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
             @Override
             public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
                 contextMenu.add(holder.getAdapterPosition(), 0, 0, "Visualizar");
                 contextMenu.add(holder.getAdapterPosition(), 0, 0, "Eliminar");
             }
         });
+        */
     }
 
     @Override
