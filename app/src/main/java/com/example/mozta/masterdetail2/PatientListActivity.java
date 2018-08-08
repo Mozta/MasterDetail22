@@ -5,16 +5,10 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.mozta.masterdetail2.dummy.DummyContent;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -52,32 +46,26 @@ public class PatientListActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference().child("User").child("R0WtLh1T9dXu3QrSUyjhYK8Qd3q2").child("Registros");
         mRefNombre = FirebaseDatabase.getInstance().getReference().child("Paciente_release");
 
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-        */
-
-        //emptyText = findViewById(R.id.text_no_data);
-
+        //Se inicializa result que es la lista de modelos de pacientes
         result = new ArrayList<>();
 
+        //Se instancia el contenedor recyclerView
         recyclerView = findViewById(R.id.patient_list);
         assert recyclerView != null;
 
+        emptyText = findViewById(R.id.text_no_data);
+
+        //Se crea una instancia de la la clase adaptador de pacientes
         adapter = new PatientsAdapter(this, result);
 
+        //Pasamos el adaptador al recyclerview
         setupRecyclerView((RecyclerView) recyclerView);
 
+        //Actualizamos la lista con los datos de la BD
         updateList();
     }
 
     private void updateList() {
-
         mDatabase.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -159,11 +147,11 @@ public class PatientListActivity extends AppCompatActivity {
 
     private void checkIfEmpty(){
         if (result.size() == 0){
-            recyclerView.setVisibility(View.INVISIBLE);
-            //emptyText.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.GONE);
+            emptyText.setVisibility(View.VISIBLE);
         } else{
             recyclerView.setVisibility(View.VISIBLE);
-            //emptyText.setVisibility(View.INVISIBLE);
+            emptyText.setVisibility(View.GONE);
         }
     }
 
@@ -171,68 +159,4 @@ public class PatientListActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
-
-
-    public static class SimpleItemRecyclerViewAdapter
-            extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
-
-        private final PatientListActivity mParentActivity;
-        private final List<PatientsModel> mValues;
-
-        private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DummyContent.DummyItem item = (DummyContent.DummyItem) view.getTag();
-
-                //Pone los datos en el fragmento derecho
-                /*Bundle arguments = new Bundle();
-                arguments.putString(PatientDetailFragment.ARG_ITEM_ID, item.id);
-                Log.d("MIO", item.id);
-
-                PatientDetailFragment fragment = new PatientDetailFragment();
-                fragment.setArguments(arguments);
-                mParentActivity.getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.patient_detail_container, fragment)
-                        .commit();*/
-            }
-        };
-
-        SimpleItemRecyclerViewAdapter(PatientListActivity parent,
-                                      List<PatientsModel> items) {
-            mValues = items;
-            mParentActivity = parent;
-        }
-
-        @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.patient_list_content, parent, false);
-            return new ViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(final ViewHolder holder, int position) {
-            //holder.mIdView.setText(mValues.get(position).key);
-            holder.mContentView.setText(mValues.get(position).nombre);
-
-            holder.itemView.setTag(mValues.get(position));
-            holder.itemView.setOnClickListener(mOnClickListener);
-        }
-
-        @Override
-        public int getItemCount() {
-            return mValues.size();
-        }
-
-        class ViewHolder extends RecyclerView.ViewHolder {
-            //final TextView mIdView;
-            final TextView mContentView;
-
-            ViewHolder(View view) {
-                super(view);
-                //mIdView = (TextView) view.findViewById(R.id.text_uuidPatient);
-                mContentView = (TextView) view.findViewById(R.id.text_nombrePatient);
-            }
-        }
-    }
 }

@@ -29,6 +29,15 @@
         tools:context="com.example.mozta.masterdetail2.PatientListActivity"
         tools:listitem="@layout/patient_list_content" />
 
+    <TextView
+        android:id="@+id/text_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:gravity="center"
+        android:paddingTop="24dp"
+        android:text="Aun no tienes pacientes registrados :("
+        android:textSize="20sp"/>
     <FrameLayout
         android:id="@+id/patient_detail_container"
         android:layout_width="0dp"

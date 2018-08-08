@@ -20,46 +20,25 @@ import java.util.List;
 
 public class PatientsAdapter extends RecyclerView.Adapter<PatientsAdapter.PatientsViewHolder>{
     public View view;
-    private PatientListActivity mParentActivity;
-    private RecyclerViewOnItemClickListener recyclerViewOnItemClickListener;
     private Context mContext;
-
     public String itemSelected;
-
     private List<PatientsModel> list;
-    private String ARG_ITEM_ID;
+
 
     public PatientsAdapter(Context context, List<PatientsModel> list) {
         this.mContext = context;
         this.list = list;
     }
 
-    public interface  RecyclerViewOnItemClickListener {
-
-        void onClick(View v, int position);
-    }
-
     @Override
     public PatientsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         view = LayoutInflater.from(parent.getContext()).inflate(R.layout.patient_list_content, parent, false);
-
         return new PatientsViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(final PatientsViewHolder holder, final int position) {
-
         final PatientsModel patient = list.get(position);
-
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d("MIO","vamooooooooooooooooooooos");
-                Log.d("MIO",list.get(position).Folio);
-
-                //PatientListActivity.intenta(list.get(position).Folio);
-            }
-        });
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
 
@@ -99,9 +78,7 @@ public class PatientsAdapter extends RecyclerView.Adapter<PatientsAdapter.Patien
         return list.size();
     }
 
-
     class PatientsViewHolder extends RecyclerView.ViewHolder{
-
         TextView textPatient, textDate, textFolio, text_nombrePatient;
 
         public PatientsViewHolder(View itemView) {

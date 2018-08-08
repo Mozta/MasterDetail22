@@ -24,8 +24,6 @@ public class PatientsModel {
         this.key = key;
     }
 
-
-
     public String getKey() {
         return key;
     }

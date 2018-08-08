@@ -51,15 +51,6 @@ public class PatientDetailFragment extends Fragment {
 
     private String nombre;
 
-    /**
-     * The dummy content this fragment is presenting.
-     */
-    private PatientsModel mItem;
-
-    /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
-     */
     public PatientDetailFragment() {
     }
 
@@ -158,12 +149,10 @@ public class PatientDetailFragment extends Fragment {
                 //model.setNombre(dataSnapshot.getValue().toString());
                 Log.e("MUESTRA", dataSnapshot.getValue().toString());
 
-
                 result.add(model);
                 adapter.notifyDataSetChanged();
 
                 checkIfEmpty();
-
             }
 
             @Override
